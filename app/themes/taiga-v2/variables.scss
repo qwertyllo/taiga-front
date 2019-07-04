@@ -1,0 +1,54 @@
+//*************************
+//** COLORS
+//************************
+
+// Colors
+$black: #000;
+$blackish: #16171D;
+$grayer: #2D2D39;
+$gray: #5A5B72;
+$gray-light: #A9AABC;
+
+$gray-lighter: #E2E3E9;
+$whitish: #F1F1F4;
+$white: #fff;
+
+// Mass white
+$mass-white: #F9F9FB;
+
+// Primary colors
+$primary-light: #92D1C5;
+$primary-lighter: #C9E8E2;
+$primary: #25A28C;
+$primary-dark: darken(#75BDB0, 5%);
+$primary-background: rgba($primary-lighter, .2);
+
+// Secondary colors
+$secondary: #9BCB35;
+$secondary-light: #CDE59A;
+$secondary-dark: #718377;
+
+//Status colors
+$green-light: #D1DFC5;
+$red-light: #FF8082;
+$red: #f00;
+$my-sin: #fcaf3e;
+$yellow-green: #9dce0a;
+
+//Card color
+$card: #fff8e4;
+$card-hover: #f1e8cd;
+$card-dark: #cfc29b;
+
+$green-japanese-laurel: #237400;
+$green-olive: #618000;
+$red-amaranth: #e43050;
+$purple-eggplant: #810061;
+$yellow-pear: #bbe831;
+
+$tribe-primary: #107a8a;
+$tribe-secondary: darken($tribe-primary, 10%);
+
+$top-icon-color: #11241f;
+$dropdown-color: rgba(darken($grayer, 20%), 1);
+$code-bg: #272822;
