@@ -1,9 +1,5 @@
 .ticket-assigned-users {
     align-items: center;
-    border-bottom: 1px solid $gray-light;
-    border-top: 1px solid $gray-light;
-    margin-bottom: 1rem;
-    padding: .5rem 0;
     position: relative;
 
     > div {
@@ -22,11 +18,6 @@
         color: $gray;
         display: block;
         margin: .2rem 0 .25rem;
-    }
-
-    .tg-assigned-users {
-        align-items: center;
-        position: relative;
     }
 
     .tg-add-assigned {

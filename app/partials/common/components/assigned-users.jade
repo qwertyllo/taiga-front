@@ -1,6 +1,6 @@
 .assigned-title(ng-if="isAssigned") {{ "COMMON.FIELDS.ASSIGNED_TO" | translate }}
 
-.tg-assigned-users
+.ticket-user-list
     .not-assigned-users(ng-if="!isAssigned")
         .user-avatar(ng-class="{'is-iocaine': isIocaine}")
             img(
@@ -31,7 +31,7 @@
                     )
                         span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
             .assigned-title(ng-if="!isAssigned && !isEditable") {{ "COMMON.ASSIGNED_TO.NOT_ASSIGNED" | translate }}
-    .user-list-single(ng-repeat="assignedUser in assignedUsers")
+    a.user-list-single(ng-repeat="assignedUser in assignedUsers")
         .user-list-avatar
             img(
                 tg-avatar="assignedUser"
@@ -43,12 +43,12 @@
                 class!="<% if (isEditable) { %>editable<% }; %>"
             )
                 span.assigned-name {{assignedUser.full_name_display}}
-            tg-svg.remove-user(
-                ng-if="isEditable",
-                ng-click="unassign(assignedUser)"
-                svg-icon="icon-close",
-                title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
-            )
+        tg-svg.remove-user(
+            ng-if="isEditable",
+            ng-click="unassign(assignedUser)"
+            svg-icon="icon-close",
+            title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+        )
 
 
 a.tg-add-assigned(

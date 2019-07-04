@@ -17,7 +17,7 @@
 # File: components/watch-button/watch-button.controller.spec.coffee
 ###
 
-describe "WatchButton", ->
+describe "TicketWatchersController", ->
     provide = null
     $controller = null
     $rootScope = null
@@ -74,7 +74,7 @@ describe "WatchButton", ->
 
         mocks.onWatch = sinon.stub().promise()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {is_watcher: false}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
@@ -98,7 +98,7 @@ describe "WatchButton", ->
 
         mocks.onUnwatch = sinon.stub().promise()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {is_watcher: true}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
@@ -120,7 +120,7 @@ describe "WatchButton", ->
     it "get permissions", () ->
         $scope = $rootScope.$new()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {_name: 'tasks'}
         })
 
