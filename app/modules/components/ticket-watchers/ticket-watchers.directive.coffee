@@ -17,12 +17,12 @@
 # File: components/ticket-watchers/ticket-watchers.directive.coffee
 ###
 
-WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate) ->
+WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template,
+$compile, $translate, $currentUserService) ->
     link = ($scope, $el, $attrs) ->
-        $ctrl = $el.controller()
-
         $scope.visibleWatchersCount = 4
         $scope.displayHidden = false
+        $scope.isAuthenticated = !!$currentUserService.getUser()
 
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
@@ -33,16 +33,18 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
             watchers = _.filter watchers, (it) -> return !!it
             $scope.vm.watchers = _.compact(watchers)
             $scope.isEditable = isEditable()
+
         $scope.toggleFold = () ->
             $scope.displayHidden = !$scope.displayHidden
 
         $el.on "click", ".user-list-single", (event) ->
+            return if not isEditable()
             event.stopPropagation()
             $scope.vm.openWatchers()
 
         $el.on "click", ".remove-user", (event) ->
-            event.stopPropagation()
             return if not isEditable()
+            event.stopPropagation()
             target = angular.element(event.currentTarget)
             watcherId = target.data("watcher-id")
 
@@ -63,7 +65,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
             $scope.vm.save(watchersIds)
 
         $scope.$watch "vm.item" , (item) ->
-            return if not item || item.watchers == _.map($scope.vm.watchers, 'id')
+            return if not item
             render()
 
         $scope.$on "$destroy", ->
@@ -91,6 +93,7 @@ WatchersDirective.$inject = [
     "$tgTemplate"
     "$compile"
     "$translate"
+    "tgCurrentUserService"
 ]
 
 angular.module("taigaComponents").directive("tgWatchers", WatchersDirective)

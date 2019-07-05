@@ -80,8 +80,6 @@ div.wrapper(
                 ng-model="issue"
             )
 
-        //tg-created-by-display.ticket-created-by(ng-model="issue")
-
         section.ticket-section.ticket-data-container
             div.ticket-status(
                 tg-issue-type-button
@@ -96,7 +94,7 @@ div.wrapper(
                 ng-model="issue"
             )
 
-        section.ticket-section.ticket-assigned-to(
+        section.ticket-section(
             tg-assigned-to
             ng-model="issue"
             required-perm="modify_issue"

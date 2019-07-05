@@ -66,16 +66,24 @@ class TicketWatchersController
         promise.finally () => @.loading = false
         return promise
 
+    unwatch: ->
+        @.loading = true
+        promise = @._unwatch()
+        promise.finally () => @.loading = false
+        return promise
+
     deleteWatcher: (watcherId) ->
         watchersIds = _.filter(@.item.watchers, (x) => x != watcherId)
         @.save(watchersIds)
 
     save: (watchersIds) ->
+        @.loading = true
         transform = @modelTransform.save (item) ->
             item.watchers = watchersIds
             return item
         transform.then =>
             @rootScope.$broadcast("object:updated")
+        transform.finally () => @.loading = false
 
     _watch: ->
         @.onWatch()
