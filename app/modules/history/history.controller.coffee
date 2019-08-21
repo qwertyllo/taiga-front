@@ -34,7 +34,7 @@ class HistorySectionController
         @.editMode = {}
         @.viewComments = true
 
-        @.reverse = @storage.get("orderComments")
+        @.reverse = @storage.get("orderComments", true)
 
         taiga.defineImmutableProperty @, 'disabledActivityPagination', () =>
             return @activityService.disablePagination
